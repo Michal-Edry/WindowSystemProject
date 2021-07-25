@@ -24,5 +24,7 @@ namespace CustomerManagementPL.UserControls
         {
             InitializeComponent();
         }
+
+        
     }
 }

@@ -30,6 +30,8 @@ namespace CustomersManagementBL
             //googleDriveAPI_manager = new GoogleDriveAPIManager(this);
             //googleDriveAPI_manager.QuickStart();
         }
+
+       
           
         public void AddItem(Item item)
         {
@@ -226,6 +228,7 @@ namespace CustomersManagementBL
             doc.Close();
 
         }
+        
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
            return idal.getAllItems(pred);

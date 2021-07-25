@@ -18,13 +18,30 @@ namespace CustomersManagementProject
             //bl.UpdateItem(new Item(2, "Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta!!!", "iuor643"));
             //bl.AddItem(new Item("Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta!!!", "iuor643", 25.00));
             //bl.RemoveItem(2);
-             List<Item> items =  bl.getAllItems();
+
+
+            List<Item> items = bl.getAllItems();
+            int i = 0; //count items
+
+            //remove all items from DBSet
+            //foreach (var item in items)
+            //{
+            //    bl.RemoveItem(item.ItemId);
+            //}
+            //items = bl.getAllItems();
+
+            //print all Items in DBSet
             foreach (var item in items)
             {
-                Console.WriteLine(item.ItemId + " " +item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " +item.Store_name + " "+item.Price);
+                i++;
+                Console.WriteLine("Number: " + i);
+                Console.WriteLine(item.ItemId + " " + item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " + item.Store_name + " " + item.Price);
             }
+            Console.WriteLine("Done!!");
 
-           
+            //create and add all items to fireBase and DBset
+            //FireBase fireBase = new FireBase(bl);
+
             Console.ReadLine();
 
         }

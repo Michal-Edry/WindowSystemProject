@@ -9,7 +9,6 @@ namespace CustomersManagementDAL
 {
     public interface IDAL
     {
-
        void AddItem(Item item);
 
         void RemoveItem(int itemId);

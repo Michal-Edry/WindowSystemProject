@@ -16,6 +16,8 @@ namespace CustomersManagementDAL
         {
 
         }
+
+       
         public void AddItem(Item item)
         {
 
@@ -25,6 +27,8 @@ namespace CustomersManagementDAL
                 ctx.SaveChanges();
             }
         }
+
+       
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
             using (var ctx = new CustomerContext())

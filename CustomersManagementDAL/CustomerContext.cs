@@ -20,7 +20,5 @@ namespace CustomersManagementDAL
 
         public DbSet<Item> Items { get; set; }
 
-        
-
     }
 }

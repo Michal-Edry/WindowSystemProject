@@ -64,7 +64,7 @@ namespace CustomerManagementPL.Models
             bl.CreatePdfForStoreRecomendations();
         }
 
-        public void  CreatePdfForDayRecomendations()
+        public void CreatePdfForDayRecomendations()
         {
             bl.CreatePdfForDayRecomendations();
         }
