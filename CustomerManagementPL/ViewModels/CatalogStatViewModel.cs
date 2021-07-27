@@ -37,7 +37,7 @@ namespace CustomerManagementPL.ViewModels
             Title = "Long-Term " + ((Enums.STAT)categoryStat).ToString();
 
             AggregationDay = new List<string>() { "Sunday", "Monday", "Tuestday", "Wendsday", "Thirstday", "Friday", "Saturday" };
-            AggregationWeek = new List<string>() { "1st Week", "2st Week", "3st Week", "4st Week" };
+            AggregationWeek = new List<string>() { "1st Week", "2st Week", "3st Week", "4st Week", "5st Week" };
             AggregationMonth = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
             AggregationYear = new List<string>();
             for (int i = DateTime.Now.Year; i >= 1970; --i)
@@ -165,7 +165,7 @@ namespace CustomerManagementPL.ViewModels
                 else
                 {
                     itemKeys.Add(item.SerialKey, new int[AggregationWeek.Count()]);
-                    itemKeys[item.SerialKey][(item.Date_of_purchase.Day) / AggregationDay.Count()] = item.Quantity;
+                    itemKeys[item.SerialKey][((item.Date_of_purchase.Day) / AggregationDay.Count())] = item.Quantity;
                 }
             }
         }

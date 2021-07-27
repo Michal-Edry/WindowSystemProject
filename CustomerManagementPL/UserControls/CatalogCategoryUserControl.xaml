@@ -17,7 +17,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#FF90BAB3" FontWeight="Bold" FontSize="16" Foreground="White">
+        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#80CBC4" FontWeight="Bold" FontSize="16" Foreground="White">
         </TextBlock>
         <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.Column="0">
             <ItemsControl ItemsSource="{Binding ItemsVM}">

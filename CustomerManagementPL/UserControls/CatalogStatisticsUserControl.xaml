@@ -15,13 +15,14 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#FFC85A5A" FontWeight="Bold" FontSize="16" Foreground="White">
+        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#80CBC4" FontWeight="Bold" FontSize="16" Foreground="White">
         </TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <materialDesign:ColorZone Mode="PrimaryMid"  HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Bottom" Background="#FF3C75B3" >
+            <materialDesign:ColorZone Mode="PrimaryMid"  HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Bottom" Background="#E0F2F1
+" >
                 <StackPanel Orientation="Horizontal" Margin="2" >
-                    <RadioButton Name="lineChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="True" Content="TIME LINE" BorderBrush="#FFF0F16E" Background="#7F4D9DD6" Click="LineChart_Click" />
-                    <RadioButton Name="barChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="False" Content="BAR CHART" BorderBrush="#FFF0F16E" Background="#7F4D9DD6" Click="BarChart_Click" />
+                    <RadioButton Name="lineChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="True" Content="Time Line" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="LineChart_Click" />
+                    <RadioButton Name="barChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="False" Content="Bar Chart" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="BarChart_Click" />
                 </StackPanel>
             </materialDesign:ColorZone>
 

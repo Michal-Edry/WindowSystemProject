@@ -24,7 +24,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button
-                            Background="#FF4D95BA"  BorderBrush="#FF4D95BA"
+                            Background="#FF9800" BorderBrush="#FB8C00"
                             Margin="10 10 10 0"
                             Content="{Binding}" 
                             Click="CategoryOnClick" />

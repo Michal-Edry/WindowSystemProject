@@ -12,23 +12,24 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <materialDesign:Card Background="#19000000" Margin="4,4,4,4" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12"/>
+        <materialDesign:Card Grid.Row="2" Background="#FFF6F4EF" Margin="4,4,4,4" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12"/>
 
-        <Grid MaxWidth="900" Grid.Row="0" >
+        <Grid MaxWidth="900" Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}"  />
-            <Button Grid.Column="1" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}"  />
+            <TextBlock Grid.Column="0" Text="Download recommendation files: " HorizontalAlignment="Center"  VerticalAlignment="Center" Width="280" FontSize="16" FontWeight="Bold"/>
+            <Button Grid.Column="1" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}" Background="#EF6C00" BorderBrush="#E65100"/>
+            <Button Grid.Column="2" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}" Background="#EF6C00" BorderBrush="#E65100"/>
         </Grid>
-        <Label Grid.Row="1" Name="TodayLabel" Content="{Binding today}" FontSize="22" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto"/>
-        <ScrollViewer Grid.Row="2" Margin="20" Background="#66858585" BorderThickness="5" BorderBrush="#FF656262" VerticalScrollBarVisibility="Auto" Padding="1"  >
-            <ItemsControl ItemsSource="{Binding ItemsVM}"  >
+        <Label Grid.Row="0" Name="TodayLabel" Content="{Binding today}" FontWeight="Bold" FontSize="22" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto"/>
+        <ScrollViewer Grid.Row="1" Margin="20" Background="#FFF6F4EF" BorderThickness="5" BorderBrush="#FF656262" VerticalScrollBarVisibility="Auto" Padding="1">
+            <ItemsControl ItemsSource="{Binding ItemsVM}" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -37,7 +38,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <UserControls:ItemRecommendedUserControl MaxHeight="200" MaxWidth="300"/>
+                        <UserControls:ItemRecommendedUserControl MaxHeight="300" MaxWidth="400"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

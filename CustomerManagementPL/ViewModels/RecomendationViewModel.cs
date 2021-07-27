@@ -23,7 +23,7 @@ namespace CustomerManagementPL.ViewModels
 
         public RecomendationViewModel()
         {
-            today =  "Here are our recommendations for today (" + DateTime.Now.DayOfWeek+")";
+            today =  "Recommendations for today (" + DateTime.Now.DayOfWeek + "):";
             CreatePDFStores = new CreatePDFCommand();
             CreatePDFDays = new CreatePDFCommand();
             CreatePDFStores.GeneratePdfEvent += CreatePDFStores_function;
