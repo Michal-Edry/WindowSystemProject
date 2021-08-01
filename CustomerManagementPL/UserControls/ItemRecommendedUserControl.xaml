@@ -9,12 +9,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid >
-        <materialDesign:Card Margin="4,4,4,4" Width="600"
+        <materialDesign:Card Margin="4,4,4,4" Width="600" Background="#FFF3E0"
         materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12">
             <StackPanel  Orientation="Horizontal">
-                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="40" Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"/>
-                <!--<TextBlock MinWidth="50"/> -->
-                <Image Source="{Binding ProductImage}" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="200" MaxWidth="200" MinHeight="100" Margin="3" /> 
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" MinHeight="40" Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"/>
+                <Image Source="{Binding ProductImage}" HorizontalAlignment="Left" VerticalAlignment="Center" MaxHeight="150" MaxWidth="150" MinHeight="100" Margin="3" /> 
             </StackPanel>
         </materialDesign:Card>
         

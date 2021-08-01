@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:CustomerManagementPL.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="300" d:DesignWidth="900">
+ <!--   <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -18,19 +18,27 @@
         materialDesign:ButtonAssist.CornerRadius="25 25 0 0" Background="White" BorderBrush="White" >
             <TextBlock Text="{Binding Title}" />
         </Button>
-
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+-->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <ItemsControl ItemsSource="{Binding Categories}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button
-                            Background="#FF9800" BorderBrush="#FB8C00"
-                            Margin="10 10 10 0"
-                            Content="{Binding}" 
-                            Click="CategoryOnClick" />
+                        <Button 
+                         Background="#FF9800" BorderBrush="#FB8C00"
+                         Margin="5 5 5 0"
+                         Content="{Binding}" 
+                         Click="CategoryOnClick" 
+                         MinWidth="200"
+                         />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-    </Grid>
+ <!--   </Grid> -->
 </UserControl>

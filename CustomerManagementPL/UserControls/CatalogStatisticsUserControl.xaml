@@ -12,26 +12,25 @@
     <Grid Name="MainLayout">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#80CBC4" FontWeight="Bold" FontSize="16" Foreground="White">
+        <TextBlock Text="{Binding Title}" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Row="0" Grid.ColumnSpan="2" Background="#80CBC4" FontWeight="Bold" FontSize="16" Foreground="White" TextAlignment="Center" VerticalAlignment="Center">
         </TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <materialDesign:ColorZone Mode="PrimaryMid"  HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Bottom" Background="#E0F2F1
+            <materialDesign:ColorZone Mode="PrimaryMid"  HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" Background="#E0F2F1
 " >
                 <StackPanel Orientation="Horizontal" Margin="2" >
-                    <RadioButton Name="lineChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="True" Content="Time Line" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="LineChart_Click" />
-                    <RadioButton Name="barChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="False" Content="Bar Chart" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="BarChart_Click" />
+                    <RadioButton Name="lineChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="50" Margin="2 2 2 0" IsChecked="True" Content="Time Line" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="LineChart_Click" />
+                    <RadioButton Name="barChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="50" Margin="2 2 2 0" IsChecked="False" Content="Bar Chart" BorderBrush="#FF83D6D6" Background="#FF83D6D6" Click="BarChart_Click" />
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <ComboBox x:Name="YearComboBox"  SelectedIndex="{Binding SelectedIndexYear}" ItemsSource="{Binding AggregationYear}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Year" >
+            <ComboBox x:Name="YearComboBox"  SelectedIndex="{Binding SelectedIndexYear}" ItemsSource="{Binding AggregationYear}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,10,2" Height="55" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Year">
             </ComboBox>
-            <ComboBox x:Name="MonthComboBox" SelectedIndex="{Binding SelectedIndexMonth}" materialDesign:TextFieldAssist.HasClearButton="True" ItemsSource="{Binding AggregationMonth}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Month" >
+            <ComboBox x:Name="MonthComboBox" SelectedIndex="{Binding SelectedIndexMonth}" materialDesign:TextFieldAssist.HasClearButton="True" ItemsSource="{Binding AggregationMonth}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2,0,10,2" Height="55" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Month" >
             </ComboBox>
-            <ComboBox Name="WeekComboBox" SelectedIndex="{Binding SelectedIndexWeek}" IsEnabled="{Binding MonthIsSelected, UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" ItemsSource="{Binding AggregationWeek}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Week" >
-                
+            <ComboBox Name="WeekComboBox" SelectedIndex="{Binding SelectedIndexWeek}" IsEnabled="{Binding MonthIsSelected, UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" ItemsSource="{Binding AggregationWeek}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2,0,10,2" Height="55" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Week" >
             </ComboBox>
 
         </StackPanel>

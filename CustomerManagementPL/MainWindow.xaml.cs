@@ -56,8 +56,8 @@ namespace CustomerManagementPL
                 MainLayout.Children.Remove(recommendationUC);
             /* Past new*/
             categoriesUC = new CategoryListUserControl(PRODUCT_CATEGORIES);
-            categoriesUC.SetValue(Grid.RowProperty, 1);
-            categoriesUC.SetValue(Grid.ColumnProperty, 0);
+            categoriesUC.SetValue(Grid.RowProperty, 2);
+            //categoriesUC.SetValue(Grid.ColumnProperty, 1);
             MainLayout.Children.Add(categoriesUC);
         }
         // [   ]  [___]  [   ]
@@ -78,8 +78,8 @@ namespace CustomerManagementPL
                 MainLayout.Children.Remove(recommendationUC);
             /* Past new*/
             categoriesUC = new CategoryListUserControl(PRODUCT_STATISTICS);
-            categoriesUC.SetValue(Grid.RowProperty, 1);
-            categoriesUC.SetValue(Grid.ColumnProperty, 0);
+            categoriesUC.SetValue(Grid.RowProperty, 2);
+            //categoriesUC.SetValue(Grid.ColumnProperty, 0);
             MainLayout.Children.Add(categoriesUC);
         }
 
@@ -109,8 +109,8 @@ namespace CustomerManagementPL
                 /* Past new*/
                 catalogBuy = new CatalogCategoryUserControl(category_catalog);
                 //catalogBuy.setCategoryCatalog(category_catalog);
-                catalogBuy.SetValue(Grid.RowProperty, 1);
-                catalogBuy.SetValue(Grid.ColumnProperty, 1);
+                catalogBuy.SetValue(Grid.RowProperty, 3);
+                //catalogBuy.SetValue(Grid.ColumnProperty, 1);
                 MainLayout.Children.Add(catalogBuy);
             }
             else if(e.NewValue != null && categoriesUC.categoryVM.Title == "Statistics")
@@ -131,8 +131,8 @@ namespace CustomerManagementPL
                 /* Past new*/
                 catalogStat = new CatalogStatisticsUserControl(statistic_catalog);
                 //catalogStat.setStatisticCatalog(statistic_catalog);
-                catalogStat.SetValue(Grid.RowProperty, 1);
-                catalogStat.SetValue(Grid.ColumnProperty, 1);
+                catalogStat.SetValue(Grid.RowProperty, 3);
+                //catalogStat.SetValue(Grid.ColumnProperty, 1);
                 MainLayout.Children.Add(catalogStat);
             }
         }
@@ -155,8 +155,9 @@ namespace CustomerManagementPL
             /* Past new*/
 
             recommendationUC = new RecomendationsUserControl();
-            recommendationUC.SetValue(Grid.RowProperty, 1);
-            recommendationUC.SetValue(Grid.ColumnSpanProperty, 2);
+            recommendationUC.SetValue(Grid.RowProperty, 2);
+            recommendationUC.SetValue(Grid.RowSpanProperty, 2);
+            //recommendationUC.SetValue(Grid.ColumnSpanProperty, 2);
             MainLayout.Children.Add(recommendationUC);
         }
     }

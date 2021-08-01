@@ -12,22 +12,32 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
+        Background="#FFF3E0"
+        FontFamily="Segoe Print"
         MinWidth="793"
         MinHeight="480"
         Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen">
-    <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click">
-        <!-- UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click"-->
+    <!--       
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+     -->
+
+    <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click" Margin="0,2,0.2,-2.2">
+       
 
         <!-- top menu -->
 
-        <Grid Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="2,0,2.2,0">
+            <TextBlock Text="Welcome to ????" FontSize="48" Margin="10,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="#EF6C00" />
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3" Margin="0,0,0.2,0.2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
             <Border Background="#FFF6F4EF" Margin="5" CornerRadius="10" Grid.ColumnSpan="3" >
 
             </Border>
@@ -38,21 +48,31 @@
 
         </Grid>
 
-        <materialDesign:Card Grid.Row="1" Grid.Column="0" Background="#FFF6F4EF"
+        <Grid Grid.Row="1" Margin="0,67,0.2,0.2" Grid.RowSpan="2" >
+            <Border Background="#FFF6F4EF" Margin="5" CornerRadius="10" >
+
+            </Border>
+        </Grid>
+
+        <materialDesign:Card Grid.Row="2" Grid.Column="0" Background="#FFF6F4EF"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
                              materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
-                             Padding="32" />
+                             Padding="32" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,53.8,0.2,-0.2" />
 
-        <materialDesign:DialogHost Name="DialogDrive" IsOpen="True" Grid.ColumnSpan="3" Grid.RowSpan="3">
+        <materialDesign:DialogHost Name="DialogDrive" IsOpen="True" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="0,0,0.2,0.2">
 
 
         </materialDesign:DialogHost>
-        <Grid.ColumnDefinitions>
+
+        <!--        <Grid.ColumnDefinitions>
             <ColumnDefinition Width="215"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+-->
         <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="67"/>
+            <RowDefinition Height="58"/>
             <RowDefinition Height="353*"/>
         </Grid.RowDefinitions>
 
