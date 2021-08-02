@@ -21,6 +21,8 @@ namespace CustomerManagementPL.ViewModels
         private ItemsModel itemsModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public Item Product { get; set; }
+
 
         public string ProductImagePath { get; set; }
         private ImageSource productImage;
@@ -66,7 +68,6 @@ namespace CustomerManagementPL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("Rating"));
             }
         }
-        public Item Product { get; set; }
 
         public ItemViewModel(Item item, ItemsModel itemsModel)
         {

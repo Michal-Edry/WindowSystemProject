@@ -7,10 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ML;
-using System.Drawing;
 using Font = iTextSharp.text.Font;
 
 namespace CustomersManagementBL
@@ -86,7 +82,7 @@ namespace CustomersManagementBL
          
           }
 
-        public void CreatePdfForDayRecomendations()
+        public void CreatePdfForDayRecomendations(string path)
         {
             List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
             List<DayOfWeek> days = new List<DayOfWeek>();
@@ -98,22 +94,34 @@ namespace CustomersManagementBL
             days.Add(DayOfWeek.Friday);
             days.Add(DayOfWeek.Saturday);
 
-            PdfPTable table = new PdfPTable(2);
+            PdfPTable table = new PdfPTable(3);
 
-            PdfPCell cell = new PdfPCell(new Phrase("Item Name"));
+            Font x = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22, Font.BOLD);
+            Font x1 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 18, Font.BOLD);
+            Font x2 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.NORMAL);
 
+            PdfPCell cell = new PdfPCell(new Phrase(@"", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
             cell.Colspan = 1;
-
-            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
-
+            cell.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
             table.AddCell(cell);
-            PdfPCell cell2 = new PdfPCell(new Phrase("Best Day"));
 
-            cell2.Colspan = 1;
+            cell = new PdfPCell(new Phrase(@"Item Name", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
+            cell.Colspan = 1;
+            cell.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+            table.AddCell(cell);
 
-            cell2.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
 
-            table.AddCell(cell2);
+            cell = new PdfPCell(new Phrase(@"Best Day", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
+            cell.Colspan = 1;
+            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            table.AddCell(cell);
+
             foreach (var tuple in tuples)
             {
                 int quantity = 0;
@@ -132,9 +140,37 @@ namespace CustomersManagementBL
                         dayOfWeek = day;
                     }
                 }
-                table.AddCell(tuple.Item2);
-                table.AddCell(dayOfWeek.ToString());
                 
+                string ProductImagePath = path + tuple.Item1 + ".jpg";
+                if (!File.Exists(ProductImagePath))
+                {
+                    ProductImagePath = path + "nothing.jpg";
+                }
+
+                iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(ProductImagePath);
+                jpg.ScaleToFit(25f, 25f);
+                PdfPCell imageCell = new PdfPCell(jpg);
+                imageCell.Colspan = 1; // either 1 if you need to insert one cell
+                imageCell.UseVariableBorders = true;
+                imageCell.BorderColor = BaseColor.WHITE;
+                imageCell.HorizontalAlignment = 1;
+                table.AddCell(imageCell);
+
+                
+                 cell = new PdfPCell(new Phrase(@tuple.Item2, x2));
+                cell.UseVariableBorders = true;
+                cell.BorderColor = BaseColor.WHITE;
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(@dayOfWeek.ToString(), x2));
+                cell.UseVariableBorders = true;
+                cell.BorderColor = BaseColor.WHITE;
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(cell); 
+                                 
             }
             Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
             doc.AddTitle("Machine Learning results");
@@ -143,45 +179,54 @@ namespace CustomersManagementBL
             //     Paragraph p1 = new Paragraph(text);
             //   doc.Add(p1);
 
-            doc.Add(table);
-            Font x = FontFactory.GetFont("nina fett");
-
-            x.Size = 19;
-
-            x.SetStyle("Italic");
-
-            x.SetColor(0, 42, 255);
-
-
-            Paragraph c2 = new Paragraph(@"Based on our recommendations for which products to buy on which  day", x);
-            c2.IndentationLeft = 30;
+            Paragraph c2 = new Paragraph("\nRecommendation on which day to buy each product\n\n", x);
+            c2.Alignment = 1;
             doc.Add(c2);
 
+            doc.Add(table);
 
             doc.Close();
         }
-        public void CreatePdfForStoreRecomendations()
+
+        public void CreatePdfForStoreRecomendations(string path)
         {
+            string ProductImagePath;
+
             List<string> storeNames = getAllStoreNames();
             List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
-            string text = "";
-            
-             PdfPTable table = new PdfPTable(2);
+            //string text = "";
 
-             PdfPCell cell = new PdfPCell(new Phrase("Item Name"));
+            PdfPTable table = new PdfPTable(3);
 
+            Font x = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22, Font.BOLD);
+            Font x1 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 18, Font.BOLD);
+            Font x2 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.NORMAL);
+
+
+            PdfPCell cell = new PdfPCell(new Phrase(@"", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
             cell.Colspan = 1;
-
-            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
-
+            cell.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
             table.AddCell(cell);
-            PdfPCell cell2 = new PdfPCell(new Phrase("Store Name"));
 
-            cell2.Colspan = 1;
+            
+            cell = new PdfPCell(new Phrase(@"Item Name", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
+            cell.Colspan = 1;
+            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            table.AddCell(cell);
+            
 
-            cell2.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            cell = new PdfPCell(new Phrase(@"Store Name", x1));
+            cell.UseVariableBorders = true;
+            cell.BorderColor = BaseColor.WHITE;
+            cell.Colspan = 1;
+            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            table.AddCell(cell);
 
-            table.AddCell(cell2);
+
             foreach (var tuple in tuples)
             {
                 float bestScore = 0;
@@ -199,36 +244,59 @@ namespace CustomersManagementBL
                         bestScore = predictionResult.Score;
                         storeName = store;
                     }
-        }
-                table.AddCell(tuple.Item2);
-                table.AddCell(storeName);
+                }
+
+                ProductImagePath = path + tuple.Item1 + ".jpg";
+                if (!File.Exists(ProductImagePath))
+                {
+                    ProductImagePath = path + "nothing.jpg";
+                }
+                
+                iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(ProductImagePath);
+                jpg.ScaleToFit(25f, 25f);
+                PdfPCell imageCell = new PdfPCell(jpg);
+                imageCell.Colspan = 1; // either 1 if you need to insert one cell
+                imageCell.UseVariableBorders = true;
+                imageCell.BorderColor = BaseColor.WHITE;
+                imageCell.HorizontalAlignment = 1;
+                table.AddCell(imageCell);
+
+                cell = new PdfPCell(new Phrase(@tuple.Item2, x2));
+                cell.UseVariableBorders = true;
+                cell.BorderColor = BaseColor.WHITE;
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(@storeName, x2));
+                cell.UseVariableBorders = true;
+                cell.BorderColor = BaseColor.WHITE;
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(cell);
+
             }
+            
+
             Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
             doc.AddTitle("Machine Learning results");
             PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Recommended Stores.pdf", FileMode.Create));
             doc.Open();
             //     Paragraph p1 = new Paragraph(text);
             //   doc.Add(p1);
-           
-            doc.Add(table);
-            Font x = FontFactory.GetFont("nina fett");
-
-            x.Size = 19;
-
-            x.SetStyle("Italic");
-
-            x.SetColor(0, 42, 255);
 
 
-            Paragraph c2 = new Paragraph(@"Based on our recommendations for which products to buy in which store", x);
-            c2.IndentationLeft = 30;
+            Paragraph c2 = new Paragraph("\nRecommendation in which store to buy each product\n\n", x);
+            c2.Alignment = 1;
             doc.Add(c2);
 
+            doc.Add(table);
 
             doc.Close();
 
         }
-        
+       
+
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
            return idal.getAllItems(pred);

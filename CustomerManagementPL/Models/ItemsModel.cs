@@ -59,14 +59,14 @@ namespace CustomerManagementPL.Models
             return bl.getAllProductsTupleNameKey();
         }
 
-        public void CreatePdfForStoreRecomendations()
+        public void CreatePdfForStoreRecomendations(string path)
         {
-            bl.CreatePdfForStoreRecomendations();
+            bl.CreatePdfForStoreRecomendations(path);
         }
 
-        public void CreatePdfForDayRecomendations()
+        public void CreatePdfForDayRecomendations(string path)
         {
-            bl.CreatePdfForDayRecomendations();
+            bl.CreatePdfForDayRecomendations(path);
         }
 
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()

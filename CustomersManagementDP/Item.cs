@@ -16,8 +16,6 @@ namespace CustomersManagementDP
     {
         public Item() { }
 
-
-
         public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price, int rating)
         {
             this.itemName = name;

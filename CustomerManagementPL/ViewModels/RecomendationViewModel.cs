@@ -35,14 +35,16 @@ namespace CustomerManagementPL.ViewModels
 
         public void CreatePDFStores_function()
         {
-            itemsModel.CreatePdfForStoreRecomendations();
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            itemsModel.CreatePdfForStoreRecomendations(path);
             PDFMessageQueue.Enqueue("The recommendations saved as 'Recommended Stores.pdf'");
             PDFMessageQueue.Enqueue("path: " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Stores.pdf");
         }
 
         public void CreatePDFDays_function()
         {
-            itemsModel.CreatePdfForDayRecomendations();
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            itemsModel.CreatePdfForDayRecomendations(path);
             PDFMessageQueue.Enqueue("The recommendations saved as 'Recommended Days.pdf'");
             PDFMessageQueue.Enqueue("path: " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf");
         }

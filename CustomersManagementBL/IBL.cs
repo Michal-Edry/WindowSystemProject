@@ -27,9 +27,9 @@ namespace CustomersManagementBL
 
         List<string> getAllStoreNames();
 
-        void CreatePdfForStoreRecomendations();
+        void CreatePdfForStoreRecomendations(string path);
 
-        void CreatePdfForDayRecomendations();
+        void CreatePdfForDayRecomendations(string path);
 
         List<Item> getRecommendationsForToday();
 
