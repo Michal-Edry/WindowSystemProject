@@ -93,21 +93,12 @@ namespace CustomerManagementPL.ViewModels
             ProductImage = src;
         }
 
-
-
-
         public UpdateItemCommand UpdateProduct { get; set; }
 
         public void Item_UpdateEvent()
         {
             itemsModel.UpdateItem(Product);
         }
-
-
-
-
-
-
 
     }
 }

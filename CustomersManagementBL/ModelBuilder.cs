@@ -49,7 +49,7 @@ namespace CustomersManagementProjectML.ConsoleApp
                                       .Append(mlContext.Transforms.Conversion.MapValueToKey("SerialKey", "SerialKey"));
             // Set the training algorithm 
             var trainer = mlContext.Recommendation().Trainers.MatrixFactorization(labelColumnName: "Rating", matrixColumnIndexColumnName: "Store_name", matrixRowIndexColumnName: "SerialKey");
-           
+
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             return trainingPipeline;

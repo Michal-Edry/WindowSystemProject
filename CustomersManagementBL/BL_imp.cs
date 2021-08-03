@@ -97,6 +97,7 @@ namespace CustomersManagementBL
             PdfPTable table = new PdfPTable(3);
 
             Font x = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22, Font.BOLD);
+            Font x3 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 24, Font.BOLD, BaseColor.ORANGE);
             Font x1 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 18, Font.BOLD);
             Font x2 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.NORMAL);
 
@@ -185,6 +186,10 @@ namespace CustomersManagementBL
 
             doc.Add(table);
 
+            c2 = new Paragraph("\n\n\nThank you for using Shop Top!", x3);
+            c2.Alignment = 1;
+            doc.Add(c2);
+
             doc.Close();
         }
 
@@ -199,6 +204,7 @@ namespace CustomersManagementBL
             PdfPTable table = new PdfPTable(3);
 
             Font x = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22, Font.BOLD);
+            Font x3 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 24, Font.BOLD, BaseColor.ORANGE);
             Font x1 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 18, Font.BOLD);
             Font x2 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.NORMAL);
 
@@ -291,6 +297,10 @@ namespace CustomersManagementBL
             doc.Add(c2);
 
             doc.Add(table);
+
+            c2 = new Paragraph("\n\n\nThank you for using Shop Top!", x3);
+            c2.Alignment = 1;
+            doc.Add(c2);
 
             doc.Close();
 

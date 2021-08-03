@@ -89,10 +89,6 @@ namespace CustomerManagementPL.ViewModels
             generateAndFilterCollectionFromModel();
         }
 
-
-
-
-
         public void ItemVM_DeleteEvent(ItemViewModel itemVM)
         {
             ItemsVM.Remove(itemVM);

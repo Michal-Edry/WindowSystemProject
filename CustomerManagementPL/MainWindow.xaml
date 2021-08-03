@@ -16,7 +16,7 @@
         FontFamily="Segoe Print"
         MinWidth="793"
         MinHeight="480"
-        Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+        Title="Shop Top" Height="600" Width="900" WindowStartupLocation="CenterScreen" Icon="images\bestlogo.jpg">
     <!--       
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
@@ -28,7 +28,14 @@
         <!-- top menu -->
 
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="2,0,2.2,0">
-            <TextBlock Text="Welcome to ????" FontSize="48" Margin="10,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="#EF6C00" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Shop Top" Grid.Column="1" FontSize="48" Margin="10,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="#EF6C00" />
+            <Image Source="images\bestlogo.jpg" HorizontalAlignment="Right" Height="70" Margin="70,0,0,0" VerticalAlignment="Center" Width="100"/>
+
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3" Margin="0,0,0.2,0.2">
