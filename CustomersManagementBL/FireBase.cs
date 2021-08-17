@@ -20,9 +20,26 @@ namespace CustomersManagementBL
         {
             this.ibl = bl;
 
-            stam();
+            //stam();
 
             Console.ReadLine();
+        }
+
+        public async Task addItem(string path)
+        {
+            var stream = File.Open(path, FileMode.Open);
+            var task = new FirebaseStorage("windowproject-c1d25.appspot.com")
+                .Child("test/QR100")
+            .PutAsync(stream);
+
+            // Track progress of the upload
+            task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+
+            // Await the task to wait until upload is completed and get the download url
+            var downloadUrl = await task;
+            Console.WriteLine(downloadUrl);
+
+            showDetails(downloadUrl);
         }
         public async Task stam()
         {
@@ -52,6 +69,7 @@ namespace CustomersManagementBL
             }
         }
        
+        
         private void showDetails(string downloadUrl)
         {
             string imageUrl = downloadUrl;

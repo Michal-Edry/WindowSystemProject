@@ -19,8 +19,10 @@ namespace CustomersManagementProject
             //bl.AddItem(new Item("Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta!!!", "iuor643", 25.00));
             //bl.RemoveItem(2);
 
-            ////create and add all items to fireBase and DBset
-            //FireBase fireBase = new FireBase(bl);
+            //create and add all items to fireBase and DBset
+            FireBase fireBase = new FireBase(bl);
+
+            //fireBase.addItem(@"C:\Users\micha\Desktop\QR100.jpg");
 
             List<Item> items = bl.getAllItems();
             int i = 0; //count items
@@ -41,8 +43,7 @@ namespace CustomersManagementProject
             }
             Console.WriteLine("Done!!");
 
-            //create and add all items to fireBase and DBset
-            //FireBase fireBase = new FireBase(bl);
+            
 
             Console.ReadLine();
 

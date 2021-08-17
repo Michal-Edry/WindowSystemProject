@@ -29,6 +29,9 @@ namespace CustomerManagementPL.ViewModels
         public UploadImageCommand UploadImage { get; set; }
         public DeleteItemCommand DeleteItem { get; set; }
 
+        //?????
+        public AddItemCommand AddItem { get; set; }
+
 
         public CatalogCategoryViewModel(Enums.TYPE categoryType)
         {
@@ -44,6 +47,9 @@ namespace CustomerManagementPL.ViewModels
 
             DeleteItem = new DeleteItemCommand();
             DeleteItem.DeleteItemViewModelEvent += ItemVM_DeleteEvent;
+
+            AddItem = new AddItemCommand();
+            AddItem.AddEvent += Item_AddEvent;
         }
 
         public void OnCatalogChange(Enums.TYPE categoryType)
@@ -57,7 +63,7 @@ namespace CustomerManagementPL.ViewModels
         private void generateAndFilterCollectionFromModel()
         {
             ItemsVM.Clear();
-            foreach (var item in itemsModel.GetItems(category))
+            foreach(var item in itemsModel.GetItems(category))
             {
                 ItemsVM.Add(new ItemViewModel(new Item(item), itemsModel));
             }
@@ -92,6 +98,19 @@ namespace CustomerManagementPL.ViewModels
         public void ItemVM_DeleteEvent(ItemViewModel itemVM)
         {
             ItemsVM.Remove(itemVM);
+        }
+
+        public void Item_AddEvent()
+        {
+            string path = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                path = openFileDialog.FileName;
+            }
+            itemsModel.AddItem(path);
+            generateAndFilterCollectionFromModel();
         }
     }
 }

@@ -17,15 +17,17 @@
         </Grid.RowDefinitions>
         <materialDesign:Card Grid.Row="2" Background="#FFF6F4EF" Margin="4,4,4,4" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12"/>
 
-        <Grid MaxWidth="900" Grid.Row="2" >
+        <Grid MaxWidth="1400" Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Download recommendation files: " HorizontalAlignment="Center"  VerticalAlignment="Center" Width="280" FontSize="16" FontWeight="Bold"/>
-            <Button Grid.Column="1" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}" Background="#EF6C00" BorderBrush="#E65100"/>
-            <Button Grid.Column="2" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}" Background="#EF6C00" BorderBrush="#E65100"/>
+            <TextBlock Grid.Column="0" Text="Download recommendation files: " HorizontalAlignment="Right"  VerticalAlignment="Center" Width="280" FontSize="16" FontWeight="Bold"/>
+            <Button Grid.Column="1" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="220" Command="{Binding CreatePDFStores}" Background="#EF6C00" BorderBrush="#E65100"/>
+            <Button Grid.Column="2" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="220" Command="{Binding CreatePDFDays}" Background="#EF6C00" BorderBrush="#E65100"/>
+            <Button Grid.Column="3" x:Name="CreatePdf3Button" Content="Analyzed Products (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="220" Command="{Binding CreatePDFAR}" Background="#EF6C00" BorderBrush="#E65100"/>
         </Grid>
         <Label Grid.Row="0" Name="TodayLabel" Content="{Binding today}" FontWeight="Bold" FontSize="22" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto"/>
         <ScrollViewer Grid.Row="1" Margin="20" Background="#FFF6F4EF" BorderThickness="5" BorderBrush="#FF656262" VerticalScrollBarVisibility="Auto" Padding="1">

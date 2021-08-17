@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Font = iTextSharp.text.Font;
+using ARM;
+using Accord.MachineLearning.Rules;
+using System.Windows.Forms;
 
 namespace CustomersManagementBL
 {
@@ -27,7 +30,11 @@ namespace CustomersManagementBL
             //googleDriveAPI_manager.QuickStart();
         }
 
-       
+       public void AddItemFB(string path)
+        {
+            FireBase fireBase = new FireBase(this);
+            fireBase.addItem(path);
+        }
           
         public void AddItem(Item item)
         {
@@ -192,7 +199,7 @@ namespace CustomersManagementBL
 
             doc.Close();
         }
-
+        
         public void CreatePdfForStoreRecomendations(string path)
         {
             string ProductImagePath;
@@ -305,7 +312,202 @@ namespace CustomersManagementBL
             doc.Close();
 
         }
-       
+
+        public void CreatePdfForAssociationRules(string path)
+        {
+            string ProductImagePath1 = path + "nothing.jpg";
+            string ProductImagePath2 = path + "nothing.jpg";
+
+            Font x = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 22, Font.BOLD);
+            Font x3 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 24, Font.BOLD, BaseColor.ORANGE);
+            Font x1 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.BOLD);
+            Font x2 = FontFactory.GetFont(BaseFont.TIMES_ROMAN, 14, Font.NORMAL);
+
+            IEnumerable<IGrouping<DateTime, CustomersManagementDP.Item>> groups = GetDateGroups();
+            List<SortedSet<int>> dataset = new List<SortedSet<int>>();
+            foreach (var g in groups)
+            {
+                SortedSet<int> s = new SortedSet<int>();
+                foreach (CustomersManagementDP.Item item in g)
+                {
+                    int id = 0;
+                    foreach (char c in item.SerialKey)
+                    {
+                        id += (int)c;
+                    }
+                    s.Add(id);
+                    // s.Add(item.ItemId);
+                }
+                dataset.Add(s);
+            }
+
+
+            Apriori apriori = new Apriori(threshold: 1, confidence: 0);
+            AssociationRuleMatcher<int> classifier = apriori.Learn(dataset.ToArray());
+            AssociationRule<int>[] rules = classifier.Rules;
+
+            
+
+            PdfPTable table = new PdfPTable(6);
+            PdfPCell cell1 = new PdfPCell(new Phrase("Product", x1));
+            cell1.UseVariableBorders = true;
+            cell1.BorderColor = BaseColor.WHITE;
+            cell1.Colspan = 1;
+            cell1.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+            PdfPCell cell11 = new PdfPCell(new Phrase(""));
+            cell11.UseVariableBorders = true;
+            cell11.BorderColor = BaseColor.WHITE;
+            cell11.Colspan = 1;
+            cell11.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+            PdfPCell cell2 = new PdfPCell(new Phrase("Goes With", x1));
+            cell2.UseVariableBorders = true;
+            cell2.BorderColor = BaseColor.WHITE;
+            cell2.Colspan = 1;
+            cell2.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+            PdfPCell cell22 = new PdfPCell(new Phrase(""));
+            cell22.UseVariableBorders = true;
+            cell22.BorderColor = BaseColor.WHITE;
+            cell22.Colspan = 1;
+            cell22.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+            PdfPCell cell3 = new PdfPCell(new Phrase("Support", x1));
+            cell3.UseVariableBorders = true;
+            cell3.BorderColor = BaseColor.WHITE;
+            cell3.Colspan = 1;
+            cell3.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+            PdfPCell cell4 = new PdfPCell(new Phrase("Confidence", x1));
+            cell4.UseVariableBorders = true;
+            cell4.BorderColor = BaseColor.WHITE;
+            cell4.Colspan = 1;
+            cell4.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+
+            table.AddCell(cell1);
+            table.AddCell(cell11);
+            table.AddCell(cell2);
+            table.AddCell(cell22);
+            table.AddCell(cell3);
+            table.AddCell(cell4);
+
+            foreach (var item in rules)
+            {
+                string s1 = "";
+                string s2 = "";
+                foreach (var itemX in item.X)
+                {
+                    foreach (var p in getAllItems())
+                    {
+                        int id = 0;
+                        foreach (char c in p.SerialKey)
+                        {
+                            id += (int)c;
+                        }
+                        if (itemX == id && s1 == "")
+                        {
+                            s1 = s1 + p.ItemName + " ";
+                            ProductImagePath1 = path + p.SerialKey + ".jpg";
+                            if (!File.Exists(ProductImagePath1))
+                            {
+                                ProductImagePath1 = path + "nothing.jpg";
+                            }
+                        }
+                    }
+                }  
+                foreach (var itemY in item.Y)
+                {
+                    foreach (var p in getAllItems())
+                    {
+                        int id = 0;
+                        foreach (char c in p.SerialKey)
+                        {
+                            id += (int)c;
+                        }
+                        if (itemY == id && s2 == "")
+                        {
+                            s2 = s2 + p.ItemName + " ";
+                            ProductImagePath2 = path + p.SerialKey + ".jpg";
+                            if (!File.Exists(ProductImagePath2))
+                            {
+                                ProductImagePath2 = path + "nothing.jpg";
+                            }
+                        }
+                    }
+                }
+
+                iTextSharp.text.Image jpg1 = iTextSharp.text.Image.GetInstance(ProductImagePath1);
+                jpg1.ScaleToFit(25f, 25f);
+                PdfPCell imageCell1 = new PdfPCell(jpg1);
+                imageCell1.Colspan = 1; // either 1 if you need to insert one cell
+                imageCell1.UseVariableBorders = true;
+                imageCell1.BorderColor = BaseColor.WHITE;
+                imageCell1.HorizontalAlignment = 1;
+
+                iTextSharp.text.Image jpg2 = iTextSharp.text.Image.GetInstance(ProductImagePath2);
+                jpg2.ScaleToFit(25f, 25f);
+                PdfPCell imageCell2 = new PdfPCell(jpg2);
+                imageCell2.Colspan = 1; // either 1 if you need to insert one cell
+                imageCell2.UseVariableBorders = true;
+                imageCell2.BorderColor = BaseColor.WHITE;
+                imageCell2.HorizontalAlignment = 1;
+
+
+                cell1 = new PdfPCell(new Phrase(s1, x2));
+                cell1.UseVariableBorders = true;
+                cell1.BorderColor = BaseColor.WHITE;
+                cell1.Colspan = 1;
+                cell1.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+                cell2 = new PdfPCell(new Phrase(s2, x2));
+                cell2.UseVariableBorders = true;
+                cell2.BorderColor = BaseColor.WHITE;
+                cell2.Colspan = 1;
+                cell2.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+                cell3 = new PdfPCell(new Phrase(item.Support.ToString(), x2));
+                cell3.UseVariableBorders = true;
+                cell3.BorderColor = BaseColor.WHITE;
+                cell3.Colspan = 1;
+                cell3.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+                cell4 = new PdfPCell(new Phrase(item.Confidence.ToString(), x2));
+                cell4.UseVariableBorders = true;
+                cell4.BorderColor = BaseColor.WHITE;
+                cell4.Colspan = 1;
+                cell4.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
+
+
+                table.AddCell(cell1);
+                table.AddCell(imageCell1);
+                table.AddCell(cell2);
+                table.AddCell(imageCell2);
+                table.AddCell(cell3);
+                table.AddCell(cell4);
+
+            }
+
+
+            Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
+            doc.AddTitle("Association Rules results");
+            PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Association Rules.pdf", FileMode.Create));
+            doc.Open();
+           
+
+            Paragraph c2 = new Paragraph("Analyzed Products \n\n", x);
+            c2.Alignment = 1;
+            doc.Add(c2);
+
+            doc.Add(table);
+
+            c2 = new Paragraph("\nThank you for using Shop Top!", x3);
+            c2.Alignment = 1;
+            doc.Add(c2);
+
+            doc.Close();
+        }
 
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {

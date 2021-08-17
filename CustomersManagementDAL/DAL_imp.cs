@@ -47,7 +47,7 @@ namespace CustomersManagementDAL
                 var grpItms = from itm in ctx.Items
                               group itm by itm.Date_of_purchase into grpItm
                               select grpItm;
-                return grpItms;
+                return grpItms.ToList();
             }
         }
 

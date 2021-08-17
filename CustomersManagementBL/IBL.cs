@@ -11,6 +11,7 @@ namespace CustomersManagementBL
     {
         void Init();
 
+        void AddItemFB(string path);
 
         void AddItem(Item item);
 
@@ -30,6 +31,8 @@ namespace CustomersManagementBL
         void CreatePdfForStoreRecomendations(string path);
 
         void CreatePdfForDayRecomendations(string path);
+
+        void CreatePdfForAssociationRules(string path);
 
         List<Item> getRecommendationsForToday();
 

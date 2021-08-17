@@ -16,6 +16,7 @@
         FontFamily="Segoe Print"
         MinWidth="793"
         MinHeight="480"
+        WindowState="Maximized"
         Title="Shop Top" Height="600" Width="900" WindowStartupLocation="CenterScreen" Icon="images\bestlogo.jpg">
     <!--       
     Background="{DynamicResource MaterialDesignPaper}"
@@ -52,7 +53,6 @@
             <Button Grid.Column="0" x:Name="Categories" Content="Categories" Click="onCategoriesButton_Click" MaxWidth="300" Margin="28 4 8 4" Background="#F57C00" BorderBrush="#EF6C00"></Button>
             <Button Grid.Column="1" x:Name="Statistics" Content="Statistics" Click="onStatisticsButton_Click" MaxWidth="300" Margin="8 4 8 4"  Background="#F57C00" BorderBrush="#EF6C00"></Button>
             <Button Grid.Column="2" x:Name="Recommended" Content="Recommended" Click="onRecommendedButton_Click" MaxWidth="300" Margin="8 4 28 4" Background="#F57C00" BorderBrush="#EF6C00"></Button>
-
         </Grid>
 
         <Grid Grid.Row="1" Margin="0,67,0.2,0.2" Grid.RowSpan="2" >

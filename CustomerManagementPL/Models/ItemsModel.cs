@@ -68,6 +68,10 @@ namespace CustomerManagementPL.Models
         {
             bl.CreatePdfForDayRecomendations(path);
         }
+        public void CreatePdfForAssociationRules(string path)
+        {
+            bl.CreatePdfForAssociationRules(path);
+        }
 
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()
         {
@@ -83,6 +87,11 @@ namespace CustomerManagementPL.Models
         public void RemoveItem(Item item)
         {
             bl.RemoveItem(item.ItemId);
+        }
+
+        public void AddItem(string path)
+        {
+            bl.AddItemFB(path);
         }
 
     }

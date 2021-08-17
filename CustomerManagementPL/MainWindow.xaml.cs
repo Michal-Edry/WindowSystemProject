@@ -160,5 +160,6 @@ namespace CustomerManagementPL
             //recommendationUC.SetValue(Grid.ColumnSpanProperty, 2);
             MainLayout.Children.Add(recommendationUC);
         }
+
     }
 }
