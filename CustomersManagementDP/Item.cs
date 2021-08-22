@@ -14,6 +14,19 @@ namespace CustomersManagementDP
     /// </summary>
     public class Item
     {
+        private int itemId;
+        private string itemName;
+        private DateTime date_of_purchase = new DateTime();
+        private string store_location;
+        private string store_name;
+        private int quantity;
+        private Enums.TYPE categorie;
+        private string serialKey;
+        private string description;
+        private double price;
+        private int rating = 4; // Default is 4
+
+
         public Item() { }
 
         public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price, int rating)
@@ -45,18 +58,7 @@ namespace CustomersManagementDP
             this.rating = item.rating;
         }
 
-        private int itemId;
-        private string itemName;
-        private DateTime date_of_purchase = new DateTime();
-        private string store_location;
-        private string store_name;
-        private int quantity;
-        private Enums.TYPE categorie;
-        private string serialKey;
-        private string description;
-        private double price;
-        private int rating = 4; // Default is 4
-
+       
         #region setters & getters
 
         public int Rating

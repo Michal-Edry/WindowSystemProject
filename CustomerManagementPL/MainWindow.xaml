@@ -18,10 +18,7 @@
         MinHeight="480"
         WindowState="Maximized"
         Title="Shop Top" Height="600" Width="900" WindowStartupLocation="CenterScreen" Icon="images\bestlogo.jpg">
-    <!--       
-    Background="{DynamicResource MaterialDesignPaper}"
-    FontFamily="{DynamicResource MaterialDesignFont}"
-     -->
+   
 
     <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click" Margin="0,2,0.2,-2.2">
        
@@ -71,11 +68,6 @@
 
         </materialDesign:DialogHost>
 
-        <!--        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="215"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
--->
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="67"/>

@@ -17,18 +17,13 @@ namespace CustomersManagementBL
     public class BL_imp : IBL
     {
         public IDAL idal { get; set; }
-        //private GoogleDriveAPIManager googleDriveAPI_manager;
 
         public BL_imp()
         {
             idal = new DAL_imp();
         }
 
-        public void Init()
-        {
-            //googleDriveAPI_manager = new GoogleDriveAPIManager(this);
-            //googleDriveAPI_manager.QuickStart();
-        }
+       
 
        public void AddItemFB(string path)
         {
@@ -336,7 +331,6 @@ namespace CustomersManagementBL
                         id += (int)c;
                     }
                     s.Add(id);
-                    // s.Add(item.ItemId);
                 }
                 dataset.Add(s);
             }
@@ -348,7 +342,7 @@ namespace CustomersManagementBL
 
             
 
-            PdfPTable table = new PdfPTable(6);
+            PdfPTable table = new PdfPTable(5);
             PdfPCell cell1 = new PdfPCell(new Phrase("Product", x1));
             cell1.UseVariableBorders = true;
             cell1.BorderColor = BaseColor.WHITE;
@@ -373,17 +367,11 @@ namespace CustomersManagementBL
             cell22.Colspan = 1;
             cell22.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
 
-            PdfPCell cell3 = new PdfPCell(new Phrase("Support", x1));
+            PdfPCell cell3 = new PdfPCell(new Phrase("Probability", x1));
             cell3.UseVariableBorders = true;
             cell3.BorderColor = BaseColor.WHITE;
             cell3.Colspan = 1;
             cell3.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
-
-            PdfPCell cell4 = new PdfPCell(new Phrase("Confidence", x1));
-            cell4.UseVariableBorders = true;
-            cell4.BorderColor = BaseColor.WHITE;
-            cell4.Colspan = 1;
-            cell4.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
 
 
             table.AddCell(cell1);
@@ -391,7 +379,6 @@ namespace CustomersManagementBL
             table.AddCell(cell2);
             table.AddCell(cell22);
             table.AddCell(cell3);
-            table.AddCell(cell4);
 
             foreach (var item in rules)
             {
@@ -467,25 +454,17 @@ namespace CustomersManagementBL
                 cell2.Colspan = 1;
                 cell2.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
 
-                cell3 = new PdfPCell(new Phrase(item.Support.ToString(), x2));
+                cell3 = new PdfPCell(new Phrase(item.Confidence.ToString(), x2));
                 cell3.UseVariableBorders = true;
                 cell3.BorderColor = BaseColor.WHITE;
                 cell3.Colspan = 1;
                 cell3.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
-
-                cell4 = new PdfPCell(new Phrase(item.Confidence.ToString(), x2));
-                cell4.UseVariableBorders = true;
-                cell4.BorderColor = BaseColor.WHITE;
-                cell4.Colspan = 1;
-                cell4.HorizontalAlignment = 1; //0=Left, 1=Center, 2=Right
-
 
                 table.AddCell(cell1);
                 table.AddCell(imageCell1);
                 table.AddCell(cell2);
                 table.AddCell(imageCell2);
                 table.AddCell(cell3);
-                table.AddCell(cell4);
 
             }
 

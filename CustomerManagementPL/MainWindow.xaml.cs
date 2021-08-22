@@ -33,7 +33,6 @@ namespace CustomerManagementPL
             this.DataContext = mViewModel;
             mViewModel = new ViewModel(this);
             this.Show();
-            mViewModel.Init();
             DialogDrive.IsOpen = false;
         }
 

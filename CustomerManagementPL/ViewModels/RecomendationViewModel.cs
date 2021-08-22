@@ -19,7 +19,6 @@ namespace CustomerManagementPL.ViewModels
     public class RecomendationViewModel
     {
         public CreatePDFCommand CreatePDFAR { get; set; }
-
         public CreatePDFCommand CreatePDFStores { get; set; }
         public CreatePDFCommand CreatePDFDays { get; set; }
         public string PopUpbarMessage { get; set; }

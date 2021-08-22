@@ -16,11 +16,6 @@ namespace CustomerManagementPL.Models
             bl = new BL_imp();
         }
 
-        public void Init()
-        {
-            bl.Init();
-        }
-
         public List<Item> GetItems(Enums.TYPE category)
         {
             return bl.getAllItems(x => x.Categorie == category);

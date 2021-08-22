@@ -9,8 +9,6 @@ namespace CustomersManagementBL
 {
     public interface IBL
     {
-        void Init();
-
         void AddItemFB(string path);
 
         void AddItem(Item item);

@@ -28,24 +28,10 @@ namespace CustomerManagementPL.ViewModels
     }
     public class ViewModel : IViewModel
     {
-
+        private ItemsModel itemsModel;
         public ViewModel(Window window)
         {
             itemsModel = new ItemsModel();
         }
-
-        public void Init()
-        {
-            itemsModel.Init();
-        }
-
-
-
-
-        private ItemsModel itemsModel;
-
-
-
-
     }
 }

@@ -28,8 +28,6 @@ namespace CustomerManagementPL.ViewModels
 
         public UploadImageCommand UploadImage { get; set; }
         public DeleteItemCommand DeleteItem { get; set; }
-
-        //?????
         public AddItemCommand AddItem { get; set; }
 
 
